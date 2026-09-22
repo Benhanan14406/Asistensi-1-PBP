@@ -32,6 +32,23 @@ def add_book(request):
         context
     )
 
+# def add_book(request):
+#     if request.method == "POST":
+#         form = BookForm(request.POST)
+#         if form.is_valid():
+#             # Extract validated data and create the model instance manually
+#             Book.objects.create(
+#                 title=form.cleaned_data["title"],
+#                 author=form.cleaned_data["author"],
+#                 stock=form.cleaned_data["stock"],
+#             )
+#             messages.success(request, "Buku berhasil ditambahkan.")
+#             return redirect("main:book_list")
+#     else:
+#         form = BookForm()
+#
+#     return render(request, "book_form.html", {"form": form})
+
 def get_books_json(request):
     title_query = request.GET.get("title", "").strip()
     books = Book.objects.all()
