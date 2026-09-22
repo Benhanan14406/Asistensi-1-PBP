@@ -22,7 +22,8 @@ app_name = 'main'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),
-    path('', home, name='book_list'),
-    path('', home, name='add_book'),
+    path('', book_list, name='book_list'),
+    path('add_book', add_book, name='add_book'),
+path("json/books/", get_books_json, name="get_books_json"),
+path("json/books/<int:book_id>/", get_book_json_by_id, name="get_book_json_by_id"),
 ]
