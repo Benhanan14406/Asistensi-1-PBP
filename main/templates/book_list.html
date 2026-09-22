@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Katalog Buku</h1>
+
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+<div class="visit-info" style="margin-bottom: 15px; padding: 10px; background-color: #f0f0f0;">
+    <p><strong>Kunjungan Terakhir (Cookie):</strong> {{ last_visit_cookie }}</p>
+    <p><strong>Kunjungan Terakhir (Session):</strong> {{ last_visit_session }}</p>
+</div>
+
+<a href="{% url 'main:add_book' %}">+ Tambah Buku Baru</a>
+
+<ul>
+{% for book in books %}
+    <li>
+        <strong>{{ book.title }}</strong> oleh {{ book.author }}
+        - Status: {% if book.is_available %}Tersedia{% else %}Stok habis{% endif %}
+        (Stok: {{ book.stock }})
+    </li>
+{% empty %}
+    <li>Belum ada buku.</li>
+{% endfor %}
+</ul>
+{% endblock %}

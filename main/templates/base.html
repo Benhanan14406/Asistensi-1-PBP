@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title dapat di-override oleh template anak -->
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+    <!-- Header / Navbar global -->
+    <header>
+        <nav>
+            <a href="{% url 'main:book_list' %}">Katalog Buku</a> |
+            <a href="{% url 'main:add_book' %}">Tambah Buku</a>
+        </nav>
+    </header>
+
+    <hr>
+
+    <!-- Area konten dinamis yang diisi oleh template anak -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <hr>
+
+</body>
+</html>

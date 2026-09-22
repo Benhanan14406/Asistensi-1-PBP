@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Tambah Buku Baru</h1>
+
+<form method="POST">
+    {% csrf_token %}
+
+    {% for field in form %}
+    <div style="margin-bottom: 10px;">
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% for error in field.errors %}
+            <div style="color: red; font-size: 0.9em;">{{ error }}</div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+    <button type="submit">Simpan Buku</button>
+</form>
+
+<p><a href="{% url 'main:book_list' %}">Kembali ke Katalog</a></p>
+{% endblock %}
